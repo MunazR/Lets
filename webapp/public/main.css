@@ -1,6 +1,46 @@
-body {
+#content {
+  background-color: #F6546A;
   margin: auto;
   width: 100%;
   max-width: 500px;
   height: 100%;
+  border: 1px solid #000000;
 }
+
+#main-title,
+#user-info,
+#auth-failed {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+#auth-failed {
+  margin: auto;
+  width: 100%;
+}
+
+#user-info {
+  font-size: 12pt;
+}
+
+#user-logged-in {
+  font-weight: bold;
+}
+
+#user-image {
+  height: 30px;
+  border: 1px black solid;
+}
+
+#user-name {
+  margin-right: 5px;
+}
+
+.align-left {
+  float: left;
+}
+
+.align-right {
+  float: right;
+}
+

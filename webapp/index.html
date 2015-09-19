@@ -2,8 +2,34 @@
   <head>
     <title>Lets</title>
     <link rel="stylesheet" type="text/css" href="public/main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.2/handlebars.min.js"></script>
+    <script src="public/app.js"></script>
+    <script id="category-template" type="text/x-handlebars-template">
+      <li class="category">
+        <h1 class="category-title">{{title}}</h1>
+        <div class="category-body">
+          <img src={{image}} />
+          <span class="category-description">{{description}}</span>
+        </div>
+      </li>
+    </script>
   </head>
   <body>
-    <h1>Lets..</h1>
+    <div id="content">
+      <h1 class="title" id="main-title">Lets App</h1>
+      <div id="auth-failed">
+        <h3>Facebook Authentication Failed</h3>
+        <p>We need you to log in before you can start using the app</p>
+        <button class=".btn-primary" id="retry-auth">Retry Authentication</button>
+      </div>
+      <div id="user-info">
+        <span class="align-left" id="user-logged-in">Logged in as</span>
+        <img class="align-right" id="user-image"/>
+        <span class="align-right" id="user-name"></span>
+      </div>
+    </div>
   </body>
 </html>
