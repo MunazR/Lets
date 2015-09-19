@@ -3,15 +3,16 @@
   margin: auto;
   width: 100%;
   max-width: 1000px;
-  height: 100%;
   border: 1px solid #000000;
+  padding-bottom: 20px;
 }
 
 #main-title,
 #user-info,
 #auth-failed,
 #create-event-form,
-#categories-container {
+#categories-container,
+#events-container {
   margin-left: 20px;
   margin-right: 20px;
 }
@@ -41,8 +42,14 @@
 }
 
 #create-event-form,
-#categories-container {
+#categories-container,
+#events-container {
   display: none;
+}
+
+#create-event-map {
+  height: 300px;
+  width: 100%;
 }
 
 .category-thumbnail {
@@ -50,7 +57,8 @@
   border: 2px black solid;
 }
 
-.category-title {
+.category-title,
+.event-name {
   font-size: 14pt;
   font-weight: bold;
 }

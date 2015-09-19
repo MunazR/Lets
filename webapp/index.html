@@ -4,18 +4,35 @@
   <title>Lets</title>
   <link rel="stylesheet" type="text/css" href="public/main.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://rsvpjs-builds.s3.amazonaws.com/rsvp-latest.min.js"></script>
   <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+  <script src="https://cdn.firebase.com/libs/geofire/2.0.0/geofire.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.2/handlebars.min.js"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA9cQkav9ERSIZy7CnUgytntw4tOnnw7DM&callback=initCreateEventMap">
+  </script>
   <script src="public/app.js"></script>
   <script id="category-template" type="text/x-handlebars-template">
-    <a href="#" class="list-group-item" data-id={{id}}>
+    <a href="#" class="list-group-item category" data-category-id={{id}}>
       <span class="category-title">{{title}}</span>
       <br />
       <div class="category-body">
         <img class="category-thumbnail" src={{image}} />
         <span class="category-description">{{description}}</span>
+      </div>
+    </a>
+  </script>
+  <script id="event-template" type="text/x-handlebars-template">
+    <a href="#" class="list-group-item event" data-event-id={{id}}>
+      <span class="event-name">{{name}}</span>
+      <br />
+      <div class="event-body">
+        <span class="event-description">{{description}}</span>
+        <br />
+        <span class="event-start">Starts: {{start}}</span>
+        <br />
+        <span class="event-end">Ends: {{end}}</span>
       </div>
     </a>
   </script>
@@ -50,18 +67,23 @@
       </div>
       <br />
       <div class="input-group">
-        <span class="input-group-addon" id="event-location-addon">Location</span>
-        <input id="event-location" type="text" placeholder="At..." class="form-control" aria-describedby="event-location-addon">
+        <span class="input-group-addon" id="event-start-date-addon">Start Date</span>
+        <input id="event-start-date" type="date" class="form-control" aria-describedby="event-start-date-addon">
       </div>
       <br />
       <div class="input-group">
-        <span class="input-group-addon" id="event-date-addon">Date</span>
-        <input id="event-date" type="date" class="form-control" aria-describedby="event-date-addon">
+        <span class="input-group-addon" id="event-start-time-addon">Start Time</span>
+        <input id="event-start-time" type="time" class="form-control" aria-describedby="event-start-time-addon">
       </div>
       <br />
       <div class="input-group">
-        <span class="input-group-addon" id="event-time-addon">Time</span>
-        <input id="event-time" type="time" class="form-control" aria-describedby="event-time-addon">
+        <span class="input-group-addon" id="event-end-date-addon">End Date</span>
+        <input id="event-end-date" type="date" class="form-control" aria-describedby="event-end-date-addon">
+      </div>
+      <br />
+      <div class="input-group">
+        <span class="input-group-addon" id="event-end-time-addon">End Time</span>
+        <input id="event-end-time" type="time" class="form-control" aria-describedby="event-end-time-addon">
       </div>
       <br />
       <div class="form-group">
@@ -74,6 +96,12 @@
           <option value="study">Study</option>
         </select>
       </div>
+      <br />
+      <span>Choose a location</span>
+      <br />
+      <div id="create-event-map">
+      </div>
+      <br />
       <a class="btn btn-primary" id="create-event-confirm" href="#">Create</a>
     </div>
     <div id="categories-container">
@@ -81,6 +109,12 @@
       <br />
       <br />
       <div class="list-group" id="categories"></div>
+    </div>
+    <div id="events-container">
+      <a href="#" class="btn btn-default" id="events-back">Go Back</a>
+      <br />
+      <h3 id="events-category-title"></h3>
+      <div class="list-group" id="events"></div>
     </div>
   </div>
 </body>
