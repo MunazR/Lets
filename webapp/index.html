@@ -36,6 +36,18 @@
       </div>
     </a>
   </script>
+  <script id="detailed-event-template" type="text/x-handlebars-template">
+    <h2 data-event-id={{id}}>{{name}}</h2>
+    <span>Created by: {{username}}</span>
+    <img class="user-image" src={{userimage}} />
+    <br />
+    <span>Description: {{description}}</span>
+    <br />
+    <span>Starts: {{start}}</span>
+    <br />
+    <span>Ends: {{end}}</span>
+    <div id="event-map" class="map"></div>
+  </script>
 </head>
 
 <body>
@@ -48,7 +60,7 @@
     </div>
     <div id="user-info">
       <span class="align-left" id="user-logged-in">Logged in as</span>
-      <img class="align-right" id="user-image" />
+      <img class="align-right user-image" id="user-image" />
       <span class="align-right" id="user-name"></span>
     </div>
     <div id="create-event-form">
@@ -99,7 +111,7 @@
       <br />
       <span>Choose a location</span>
       <br />
-      <div id="create-event-map">
+      <div id="create-event-map" class="map">
       </div>
       <br />
       <a class="btn btn-primary" id="create-event-confirm" href="#">Create</a>
@@ -115,6 +127,11 @@
       <br />
       <h3 id="events-category-title"></h3>
       <div class="list-group" id="events"></div>
+    </div>
+    <div id="detailed-event-container">
+      <a href="#" class="btn btn-default" id="detailed-event-back">Go Back</a>
+      <br />
+      <div id="detailed-event"></div>
     </div>
   </div>
 </body>

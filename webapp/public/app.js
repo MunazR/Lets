@@ -21,6 +21,11 @@ $(document).ready(function() {
     $("#categories-container").show();
   });
 
+  $("#detailed-event-back").on('click', function() {
+    $("#detailed-event-container").hide();
+    $("#events-container").show();
+  });
+
   $("#create-event-confirm").on('click', function() {
     var name = $("#event-name").val();
     var description = $("#event-description").val();
@@ -137,7 +142,7 @@ function init(ref, data) {
         for (var eventId in data) {
           var event = data[eventId];
           if (event.category !== id) {
-            return;
+            continue;
           }
 
           var endDate = new Date(event.end);
@@ -145,14 +150,61 @@ function init(ref, data) {
           var curr = new Date();
 
           if (curr > endDate) {
-            return;
+            continue;
           }
 
           event.start = startDate.toLocaleString();
           event.end = endDate.toLocaleString();
+          event.id = eventId;
 
           $("#events").append(template(event));
         }
+
+        $(".event").on('click', function() {
+          var eventId = $(this).data("event-id");
+          var eventRef = eventsRef.child(eventId);
+
+          eventRef.on('value', function(dataSnapshot) {
+            var event = dataSnapshot.val();
+
+            var endDate = new Date(event.end);
+            var startDate = new Date(event.start);
+            event.start = startDate.toLocaleString();
+            event.end = endDate.toLocaleString();
+            event.id = eventId;
+
+            var eventUserRef = usersRef.child(event.user);
+
+            eventUserRef.on('value', function(dataSnapshot) {
+              var user = dataSnapshot.val();
+              var template = Handlebars.compile($("#detailed-event-template").html());
+
+              event.username = user.first_name;
+              event.userimage = user.picture.data.url;
+
+              $("#detailed-event").html(template(event));
+
+              var eventMap = new google.maps.Map(document.getElementById('event-map'), {
+                center: {
+                  lat: event.l.location[0],
+                  lng: event.l.location[1]
+                },
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                zoom: 17
+              });
+
+              var eventMarker = new google.maps.Marker({
+                position: eventMap.getCenter(),
+                map: eventMap,
+                title: "Event Location"
+              });
+
+              $("#detailed-event-container").show();
+              $("#events-container").hide();
+            });
+          })
+
+        });
       });
 
       $("#events-category-title").html(title);
