@@ -2,14 +2,16 @@
   background-color: #F6546A;
   margin: auto;
   width: 100%;
-  max-width: 500px;
+  max-width: 1000px;
   height: 100%;
   border: 1px solid #000000;
 }
 
 #main-title,
 #user-info,
-#auth-failed {
+#auth-failed,
+#create-event-form,
+#categories-container {
   margin-left: 20px;
   margin-right: 20px;
 }
@@ -21,6 +23,8 @@
 
 #user-info {
   font-size: 12pt;
+  display: none;
+  height: 50px;
 }
 
 #user-logged-in {
@@ -36,6 +40,25 @@
   margin-right: 5px;
 }
 
+#create-event-form,
+#categories-container {
+  display: none;
+}
+
+.category-thumbnail {
+  height: 40px;
+  border: 2px black solid;
+}
+
+.category-title {
+  font-size: 14pt;
+  font-weight: bold;
+}
+
+.category-description {
+  font-size: 10pt;
+}
+
 .align-left {
   float: left;
 }
@@ -43,4 +66,3 @@
 .align-right {
   float: right;
 }
-
