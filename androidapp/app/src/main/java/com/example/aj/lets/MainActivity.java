@@ -1,25 +1,49 @@
 package com.example.aj.lets;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
-import com.firebase.client.AuthData;
+
+import com.facebook.FacebookException;
+import com.facebook.login.LoginResult;
 import com.firebase.client.Firebase;
-import com.firebase.client.FirebaseError;
-//import com.facebook.FacebookSdk;
+import com.facebook.FacebookSdk;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.login.widget.LoginButton;
 
 public class MainActivity extends Activity {
     private Firebase backend;
+    private CallbackManager callbackManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Firebase.setAndroidContext(this);
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        callbackManager = CallbackManager.Factory.create();
+        LoginButton loginButton = (LoginButton) findViewById(R.id.login_button);
+        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                // App code
+            }
+
+            @Override
+            public void onCancel() {
+                // App code
+            }
+
+            @Override
+            public void onError(FacebookException exception) {
+                // App code
+            }
+        });
     }
 
     @Override
@@ -28,19 +52,7 @@ public class MainActivity extends Activity {
 
         backend = new Firebase("https://incandescent-torch-8518.firebaseio.com");
         TextView TextViewEnterMessage= (TextView) findViewById(R.id.TextViewEnterMessage);
-        Button ButtonSignInFb= (Button) findViewById(R.id.ButtonSignInFb);
     }
-
-    public void signIn(){
-
-        Intent startEventsList= new Intent(this, test.class);
-        startActivity(startEventsList);
-
-    }
-
-
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

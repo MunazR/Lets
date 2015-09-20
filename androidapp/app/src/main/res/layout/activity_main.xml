@@ -14,17 +14,13 @@
         android:layout_alignParentStart="true"
         android:textSize="30dp" />
 
-    <Button
-        style="?android:attr/buttonStyleSmall"
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/login_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign In via Facebook"
-        android:id="@+id/ButtonSignInFb"
-        android:onClick="signIn"
-        android:layout_marginTop="66dp"
-        android:textSize="25dp"
-        android:layout_below="@+id/TextViewEnterMessage"
-        android:layout_centerHorizontal="true" />
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="30dp" />
 
     <TextView
         android:layout_width="wrap_content"
