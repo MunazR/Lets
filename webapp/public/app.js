@@ -8,6 +8,7 @@ $(document).ready(function() {
   $("#create-event-link").on('click', function() {
     $("#create-event-form").show();
     google.maps.event.trigger(createEventMap, "resize");
+    createEventMap.panTo(createEventMarker.position)
     $("#categories-container").hide();
   });
 
@@ -201,6 +202,9 @@ function init(ref, data) {
 
               $("#detailed-event-container").show();
               $("#events-container").hide();
+
+              google.maps.event.trigger(eventMap, "resize");
+              eventMap.panTo(eventMarker.position)
             });
           })
 
