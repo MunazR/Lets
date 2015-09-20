@@ -1,0 +1,48 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.1"
+
+    defaultConfig {
+        applicationId "com.example.aj.lets"
+        minSdkVersion 21
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE-FIREBASE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'NOTICE_firebase_jvm'
+        exclude 'META-INF/LICENSE-FIREBASE_jvm.txt'
+        exclude 'META-INF/services/com.fasterxml.jackson.core.ObjectCodec'
+        exclude 'META-INF/services/com.fasterxml.jackson.core.JsonFactory'
+        exclude 'NOTICE_firebase_android'
+        exclude 'META-INF/LICENSE-FIREBASE_android.txt'
+
+    }
+    repositories { mavenCentral() }
+
+    dependencies {
+        compile fileTree(dir: 'libs', include: ['*.jar'])
+        compile ('com.firebase:firebase-client-android:2.3.1+')
+        compile ('com.facebook.android:facebook-android-sdk:4.0.0')
+       // compile files ('libs/firebase-client-android-2.3.1.jar')
+    }
+    defaultConfig {
+        // Enabling multidex support.
+        multiDexEnabled true
+    }
+
+
+
+}
