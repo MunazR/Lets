@@ -54,6 +54,15 @@ public class MainActivity extends Activity {
         TextView TextViewEnterMessage= (TextView) findViewById(R.id.TextViewEnterMessage);
     }
 
+
+    public void loadEvents (View view){
+        // Intent startEventsList= new Intent(this, events.class);
+        // startActivity(startEventsList);
+        setContentView(R.layout.activity_events);
+
+
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

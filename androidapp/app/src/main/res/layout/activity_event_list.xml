@@ -1,0 +1,78 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.example.aj.lets.eventList">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lets..."
+        android:id="@+id/textViewTitle"
+        android:layout_alignTop="@+id/textView2"
+        android:textSize="30dp"
+        android:layout_above="@+id/buttonActivityEat" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Eat"
+        android:id="@+id/buttonActivityEat"
+        android:onClick="loadEvents"
+        android:height="80dp"
+        android:layout_above="@+id/buttonActivityFeds"
+        android:layout_alignEnd="@+id/buttonActivityFeds"
+        android:layout_toEndOf="@+id/textView2" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Feds"
+        android:id="@+id/buttonActivityFeds"
+        android:onClick="loadEvents"
+        android:height="80dp"
+        android:layout_above="@+id/buttonActivityMeet"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/buttonActivityMeet" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Meet"
+        android:id="@+id/buttonActivityMeet"
+        android:onClick="loadEvents"
+        android:height="80dp"
+        android:layout_above="@+id/buttonActivityPlay"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/buttonActivityPlay" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Play"
+        android:id="@+id/buttonActivityPlay"
+        android:onClick="loadEvents"
+        android:height="80dp"
+        android:layout_above="@+id/buttonActivityStudy"
+        android:layout_alignEnd="@+id/buttonActivityStudy"
+        android:layout_toEndOf="@+id/textView2" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Study"
+        android:id="@+id/buttonActivityStudy"
+        android:onClick="loadEvents"
+        android:height="80dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/textView2" />
+
+</RelativeLayout>
