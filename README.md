@@ -21,10 +21,10 @@ The web application justs Firebase, Facebook Api, Google Maps Api, Handlebars js
 
 Screenshots
 
-![main menu]('images/webapp_screenshot_1.png')
-![create event]('images/webapp_screenshot_2.png')
-![view events]('images/webapp_screenshot_3.png')
-![view single event]('images/webapp_screenshot_4.png')
+![main menu](images/webapp_screenshot_1.png)
+![create event](images/webapp_screenshot_2.png)
+![view events](images/webapp_screenshot_3.png)
+![view single event](images/webapp_screenshot_4.png)
 
 ## Android App
 
