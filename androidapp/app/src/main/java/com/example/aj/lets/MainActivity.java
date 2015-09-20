@@ -11,6 +11,9 @@ import com.firebase.client.FirebaseError;
 //import com.facebook.FacebookSdk;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+
+
 
 public class MainActivity extends Activity {
     private Firebase backend;
@@ -28,19 +31,25 @@ public class MainActivity extends Activity {
 
         backend = new Firebase("https://incandescent-torch-8518.firebaseio.com");
         TextView TextViewEnterMessage= (TextView) findViewById(R.id.TextViewEnterMessage);
-        Button ButtonSignInFb= (Button) findViewById(R.id.ButtonSignInFb);
+        Button ButtonSignInFb = (Button) findViewById(R.id.ButtonSignInFb);
     }
 
-    public void signIn(){
+    public void signIn(View view){
 
-        Intent startEventsList= new Intent(this, test.class);
-        startActivity(startEventsList);
+       // Intent startEventsList = new Intent(this, eventList.class);
+       // startActivity(startEventsList);
+        setContentView(R.layout.activity_event_list);
 
     }
 
 
+    public void loadEvents (View view){
+        // Intent startEventsList= new Intent(this, events.class);
+        // startActivity(startEventsList);
+        setContentView(R.layout.activity_events);
 
 
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
