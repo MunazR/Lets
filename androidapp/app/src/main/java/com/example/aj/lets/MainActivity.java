@@ -2,6 +2,7 @@ package com.example.aj.lets;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -15,6 +16,7 @@ import android.view.View;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.login.widget.LoginButton;
+import android.view.LayoutInflater;
 
 public class MainActivity extends Activity {
     private Firebase backend;

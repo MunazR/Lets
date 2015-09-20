@@ -8,7 +8,7 @@ $(document).ready(function() {
   $("#create-event-link").on('click', function() {
     $("#create-event-form").show();
     google.maps.event.trigger(createEventMap, "resize");
-    createEventMap.panTo(createEventMarker.position)
+    createEventMap.panTo(createEventMarker.position);
     $("#categories-container").hide();
   });
 
@@ -20,6 +20,21 @@ $(document).ready(function() {
   $("#events-back").on('click', function() {
     $("#events-container").hide();
     $("#categories-container").show();
+  });
+
+  $("#events-map-back").on('click', function() {
+    $("#events-container").show();
+    $("#events-map-container").hide();
+  });
+
+  $("#events-view-map").on('click', function() {
+    $("#events-container").hide();
+    $("#events-map-container").show();
+    google.maps.event.trigger(eventsMap, "resize");
+    eventsMap.panTo({
+      lat: 43.4722854,
+      lng: -80.5448576
+    });
   });
 
   $("#detailed-event-back").on('click', function() {
@@ -140,6 +155,15 @@ function init(ref, data) {
         $("#events").empty();
         var data = dataSnapshot.val();
 
+        eventsMap = new google.maps.Map(document.getElementById('events-map'), {
+          center: {
+            lat: 43.4722854,
+            lng: -80.5448576
+          },
+          mapTypeId: google.maps.MapTypeId.ROADMAP,
+          zoom: 15
+        });
+
         for (var eventId in data) {
           var event = data[eventId];
           if (event.category !== id) {
@@ -159,7 +183,19 @@ function init(ref, data) {
           event.id = eventId;
 
           $("#events").append(template(event));
+
+          var eventsMarker = new google.maps.Marker({
+            position: {
+              lat: event.l.location[0],
+              lng: event.l.location[1]
+            },
+            map: eventsMap,
+            title: event.name
+          });
         }
+
+        google.maps.event.trigger(eventsMap, "resize");
+        eventsMap.panTo(eventsMap.center);
 
         $(".event").on('click', function() {
           var eventId = $(this).data("event-id");
@@ -204,7 +240,7 @@ function init(ref, data) {
               $("#events-container").hide();
 
               google.maps.event.trigger(eventMap, "resize");
-              eventMap.panTo(eventMarker.position)
+              eventMap.panTo(eventMarker.position);
             });
           })
 
@@ -223,6 +259,7 @@ function init(ref, data) {
 
 var createEventMap;
 var createEventMarker;
+var eventsMap;
 
 function initCreateEventMap() {
   createEventMap = new google.maps.Map(document.getElementById('create-event-map'), {

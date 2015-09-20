@@ -13,6 +13,7 @@
 #create-event-form,
 #categories-container,
 #events-container,
+#events-map-container,
 #detailed-event-container {
   margin-left: 20px;
   margin-right: 20px;
@@ -45,7 +46,8 @@
 #create-event-form,
 #categories-container,
 #events-container,
-#detailed-event-container {
+#detailed-event-container,
+#events-map-container {
   display: none;
 }
 
@@ -58,6 +60,11 @@
 
 .map {
   height: 300px;
+  width: auto;
+}
+
+.large-map {
+  height: 500px;
   width: auto;
 }
 

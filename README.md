@@ -7,8 +7,6 @@ This app was created as our Hack the North project for the 2015 competition. Tha
 
 Lets is an application allows people to connect and share events.
 
-There are currently 2 versions of this app. The responsive [Web App](##webapp) and versatile [Android App](##androidapp)
-
 ### User Authentication
 This application uses Facebook to authenticate users and allow them to create, share and view events
 
@@ -30,4 +28,4 @@ Screenshots
 
 ## Android App
 
-The android app provides similar functionality to the web app.
+In progress
